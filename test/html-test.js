@@ -1,7 +1,8 @@
+/*global require, module */
 var
   Kompressor = require('../lib/kompressor'),
   vows = require('vows'),
-  assert = require('assert')
+  assert = require('assert');
 
 vows.describe('We test minifying HTML').addBatch({
   'Given some html': {
@@ -62,7 +63,7 @@ vows.describe('We test minifying HTML').addBatch({
       },
       ' and HTML comments in script tags should be removed': function(obj) {
         assert.isTrue(/<script><!--\/\/\[\[CDATA\r\nvar toto=1;\r\ntoto=3;\r\n\]\]\/\/--><\/script>/.test(obj.transformedBody));
-      },
+      }
 
     }
   },
@@ -78,7 +79,7 @@ vows.describe('We test minifying HTML').addBatch({
       },
       ' and scripts should remain untouched': function(obj) {
         assert.isTrue(/<script>var toto=1;toto=3;<\/script><script>\r\nvar tata=1;\r\ndocument\.write\(tata\);\r\n<\/script>/.test(obj.transformedBody));
-      },
+      }
 
     }
   },
