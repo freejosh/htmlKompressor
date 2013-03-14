@@ -29,7 +29,7 @@ vows.describe('We test minifying HTML').addBatch({
         assert.isTrue(obj.transformedBody.length < obj.inputLength);
       },
       'and there\'s no more comment except conditionnal comments': function(obj) {
-        assert.equal(obj.transformedBody,'<!--[if gte IE 9]><!--> <html lang="fr"> <!--<![endif]--> <html><head><!--[if IE ]><style>fuck {color:red}</style><![endif]--></head><body>hello world</body></html>');
+        assert.equal(obj.transformedBody,'<!--[if gte IE 9]><!--><html lang="fr"><!--<![endif]--><html><head><!--[if IE ]><style>fuck {color:red}</style><![endif]--></head><body>hello world</body></html>');
       }
     }
   },
@@ -114,7 +114,7 @@ vows.describe('We test minifying HTML').addBatch({
     'topic': Kompressor("\t <tag  src=\"/  test.jpg\"  href='/  test2.html' other = \"  other  attribute  \"  />  \r\n<tag title=\"  Title  \" /> \t        "),
     'the content of attributes should remain untouched, only spaces at the beginning and the end of line should be condensed': function(obj) {
       assert.equal(obj,
-                   '<tag  src="/  test.jpg"  href=\'/  test2.html\' other = "  other  attribute  "  /> <tag title="  Title  " /> ');
+                   '<tag  src="/  test.jpg"  href=\'/  test2.html\' other = "  other  attribute  "  /><tag title="  Title  " />');
     }
   }
 }).export(module); // Run it
